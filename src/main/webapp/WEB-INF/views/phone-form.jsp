@@ -37,10 +37,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="phone" class="col-md-3 control-label">
                             <table>
-                                <thead>
                                 <tr>
+                                    <td></td>
                                     <td>
                                         <c:forEach var="tempCustomer" items="${customers}">
                                             <label>
@@ -49,9 +48,7 @@
                                         </c:forEach>
                                     </td>
                                 </tr>
-                                </thead>
                             </table>
-                        </label>
                     </div>
                     <div class="form-group">
                         <!-- Button -->

@@ -1,4 +1,4 @@
-package net.javaguides.springmvc.entity;
+package com.project.springmvc.entity;
 
 import javax.persistence.*;
 
@@ -14,9 +14,9 @@ public class Phone {
     @Column(name = "phone")
     private String phone;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer_id;
+//    @ManyToOne
+//    @JoinColumn(name = "customer_id")
+//    private Customer customer;
 
     public Phone() {
     }
@@ -37,18 +37,18 @@ public class Phone {
         this.phone = phone;
     }
 
-    public Customer getCustomer_id() {
-        return customer_id;
-    }
+//    public Customer getCustomer() {
+//        return customer;
+//    }
 
-    public void setCustomer_id(Customer customer_id) {
-        this.customer_id = customer_id;
-    }
+//    public void setCustomer(Customer customer_id) {
+//        this.customer = customer_id;
+//    }
 
-    public Phone(int phone_id, String phone, Customer customer_id) {
+    public Phone(int phone_id, String phone, Customer customer) {
         this.phone_id = phone_id;
         this.phone = phone;
-        this.customer_id = customer_id;
+//        this.customer = customer;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Phone {
         return "Phone{" +
                 "phone_id=" + phone_id +
                 ", phone='" + phone + '\'' +
-                ", customer_id=" + customer_id +
+//                ", customer_id=" + customer.getId() +
                 '}';
     }
 }

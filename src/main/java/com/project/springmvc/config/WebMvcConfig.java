@@ -1,4 +1,4 @@
-package net.javaguides.springmvc.config;
+package com.project.springmvc.config;
 
 import org.springframework.context.annotation.Bean;
 
@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "net.javaguides.springmvc" })
+@ComponentScan(basePackages = { "com.project.springmvc" })
 public class WebMvcConfig implements WebMvcConfigurer{
 
 	@Bean
