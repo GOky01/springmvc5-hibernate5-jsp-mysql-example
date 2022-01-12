@@ -21,8 +21,8 @@ public class Customer {
     @Column(name = "email")
     private String email;
 
-//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", cascade = CascadeType.REMOVE)
-//    private Set<Phone> phones;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", cascade = CascadeType.REMOVE)
+    private Set<Phone> phones;
 
     public Customer() {
     }
@@ -32,16 +32,16 @@ public class Customer {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-//		this.phones = phones;
+		this.phones = phones;
 	}
 
-//	public Set<Phone> getPhones() {
-//        return phones;
-//    }
+	public Set<Phone> getPhones() {
+        return phones;
+    }
 
-//    public void setPhones(Set<Phone> phones) {
-//        this.phones = phones;
-//    }
+    public void setPhones(Set<Phone> phones) {
+        this.phones = phones;
+    }
 
     public int getId() {
         return id;

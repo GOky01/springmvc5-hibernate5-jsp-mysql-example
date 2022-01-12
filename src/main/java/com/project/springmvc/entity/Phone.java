@@ -14,9 +14,9 @@ public class Phone {
     @Column(name = "phone")
     private String phone;
 
-//    @ManyToOne
-//    @JoinColumn(name = "customer_id")
-//    private Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     public Phone() {
     }
@@ -37,18 +37,18 @@ public class Phone {
         this.phone = phone;
     }
 
-//    public Customer getCustomer() {
-//        return customer;
-//    }
+    public Customer getCustomer() {
+        return customer;
+    }
 
-//    public void setCustomer(Customer customer_id) {
-//        this.customer = customer_id;
-//    }
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     public Phone(int phone_id, String phone, Customer customer) {
         this.phone_id = phone_id;
         this.phone = phone;
-//        this.customer = customer;
+        this.customer = customer;
     }
 
     @Override

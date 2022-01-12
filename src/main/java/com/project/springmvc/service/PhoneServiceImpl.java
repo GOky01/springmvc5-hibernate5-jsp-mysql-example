@@ -3,7 +3,6 @@ package com.project.springmvc.service;
 import com.project.springmvc.entity.Phone;
 import com.project.springmvc.repository.PhoneRepository;
 import javassist.NotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,12 +11,17 @@ import java.util.List;
 @Service
 public class PhoneServiceImpl implements PhoneService {
 
-    @Autowired
+    final
     PhoneRepository phoneRepository;
+
+    public PhoneServiceImpl(PhoneRepository phoneRepository) {
+        this.phoneRepository = phoneRepository;
+    }
+
     @Override
     @Transactional
     public List<Phone> getPhones() {
-        return (List<Phone>) phoneRepository.findAll();
+        return phoneRepository.findAll();
     }
 
     @Override

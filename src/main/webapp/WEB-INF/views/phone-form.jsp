@@ -40,13 +40,13 @@
                             <table>
                                 <tr>
                                     <td></td>
-                                    <td>
-                                        <c:forEach var="tempCustomer" items="${customers}">
-                                            <label>
-                                                <input type="radio" value="${tempCustomer.id}" name="id"/>
-                                            </label>${tempCustomer.firstName}<br/>
-                                        </c:forEach>
-                                    </td>
+<%--                                    <td>--%>
+<%--                                        <c:forEach var="tempCustomer" items="${customers}">--%>
+<%--                                            <label>--%>
+<%--                                                <input type="radio" value="${tempCustomer.id}" name="id"/>--%>
+<%--                                            </label>${tempCustomer.firstName}<br/>--%>
+<%--                                        </c:forEach>--%>
+<%--                                    </td>--%>
                                 </tr>
                             </table>
                     </div>

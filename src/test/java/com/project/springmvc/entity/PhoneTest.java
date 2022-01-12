@@ -1,16 +1,12 @@
 package com.project.springmvc.entity;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.sql.SQLException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class CustomerTest {
-
+class PhoneTest {
     Phone phoneNumber = null;
     Customer customer = null;
 
@@ -25,17 +21,17 @@ class CustomerTest {
     }
 
     @Test
-    void save() throws SQLException {
-        customer.setId(11);
-        customer.setFirstName("Andrew");
-        customer.setLastName("Silich");
-        customer.setEmail("andrewsilich@lpnu.ua");
-
-        assertEquals(11, customer.getId());
-        assertEquals("Andrew", customer.getFirstName());
-        assertEquals("Silich", customer.getLastName());
-        assertEquals("andrewsilich@lpnu.ua", customer.getEmail());
-        assertNotNull(customer);
+    void phoneFieldsCorresponding() {
+        Phone phone;
+        phoneNumber.setPhone_id(10);
+        phoneNumber.setPhone("6432616311");
+        assertEquals(10, phoneNumber.getPhone_id());
+        assertEquals("6432616311", phoneNumber.getPhone());
+        assertNotNull(phoneNumber);
+        phone=phoneNumber;
+        assertSame(phone, phoneNumber);
+        assertEquals(phone, phoneNumber);
+        assertInstanceOf(Phone.class, phoneNumber);
     }
 
     @AfterEach
