@@ -11,8 +11,7 @@ import java.util.List;
 @Service
 public class PhoneServiceImpl implements PhoneService {
 
-    final
-    PhoneRepository phoneRepository;
+    private final PhoneRepository phoneRepository;
 
     public PhoneServiceImpl(PhoneRepository phoneRepository) {
         this.phoneRepository = phoneRepository;

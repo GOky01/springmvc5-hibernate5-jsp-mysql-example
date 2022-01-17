@@ -2,17 +2,15 @@ package com.project.springmvc.service;
 
 import com.project.springmvc.config.AppContext;
 import com.project.springmvc.entity.Customer;
-import com.project.springmvc.repository.CustomerRepository;
 import javassist.NotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,11 +24,8 @@ import static org.junit.Assert.assertEquals;
 @Transactional
 class CustomerServiceImplTest {
 
-    @Resource
-    CustomerService customerService;
-
-    @Resource
-    CustomerRepository customerRepository;
+    @Autowired
+    private CustomerService customerService;
 
     @Test
     void saveAndGetCustomer() throws NotFoundException {
@@ -66,6 +61,5 @@ class CustomerServiceImplTest {
         assertEquals(customer, customerById);
         customerService.deleteCustomer(6);
         assertThat(customer).isNotIn(customerService);
-        assertThat(customer).isNotIn(customerRepository);
     }
 }

@@ -1,21 +1,17 @@
-package com.project.springmvc.service;
+package com.project.springmvc.repository;
 
 import com.project.springmvc.config.AppContext;
 import com.project.springmvc.entity.Customer;
 import com.project.springmvc.entity.Phone;
-import com.project.springmvc.repository.CustomerRepository;
-import com.project.springmvc.repository.PhoneRepository;
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -25,30 +21,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(
-        classes = {AppContext.class, CustomerServiceImpl.class},
+        classes = {AppContext.class, CustomerRepository.class},
         loader = AnnotationConfigContextLoader.class)
 @Transactional
-public class InMemoryDbTest {
+public class CustomerRepositoryTest {
 
-    @Resource
+    @Autowired
     private CustomerRepository customerRepository;
-    @Resource
-    private PhoneRepository phoneRepository;
 
     @Test
     public void saveAndGetCustomer() {
 
         Customer customer = new Customer();
-        Customer customer2 = new Customer();
         customer.setFirstName("testName");
         customer.setLastName("testLastName");
         customer.setEmail("test@gmail.com");
-        Phone phone1 = new Phone(1, "123613143", customer);
-        Phone phone2 = new Phone(2, "714361125", customer);
-        Phone phone3 = new Phone(3, "613465123", customer2);
+        Phone phone1 = new Phone(1, "123613143");
+        Phone phone2 = new Phone(2, "714361125");
+        Phone phone3 = new Phone(3, "613465123");
         Set<Phone> phoneSet = new HashSet<>();
         phoneSet.add(phone1);
         phoneSet.add(phone2);
@@ -89,49 +81,5 @@ public class InMemoryDbTest {
         assertEquals(savedCustomer, customerById);
         customerRepository.deleteById(1);
         assertThat(savedCustomer).isNotIn(customerRepository);
-    }
-
-    @Test
-    public void saveAndGetPhone() {
-
-        Customer customer = new Customer();
-        customer.setFirstName("testName");
-        customer.setLastName("testLastName");
-        customer.setEmail("test@gmail.com");
-        Phone phone1 = new Phone(0, "123613143", customer);
-
-        phoneRepository.save(phone1);
-        Phone phoneById = phoneRepository.findById(2).get();
-        assertAll("Field`s values equals",
-                () -> assertEquals(phone1.getPhone_id(), phoneById.getPhone_id()),
-                () -> assertEquals(phone1.getPhone(), phoneById.getPhone()),
-                () -> assertEquals(phone1.getCustomer().getId(), phoneById.getCustomer().getId()),
-                () -> assertEquals(phone1.getCustomer(), phoneById.getCustomer()));
-    }
-
-    @Test
-    public void getPhones() {
-        List<Phone> customerEmptyRepository = phoneRepository.findAll();
-        Assertions.assertEquals("[]", customerEmptyRepository.toString());
-        Phone phone = new Phone(),
-                phone1 = new Phone(),
-                phone2 = new Phone();
-        List<Phone> phoneList = new ArrayList<>();
-        phoneList.add(phone);
-        phoneList.add(phone1);
-        phoneList.add(phone2);
-        List<Phone> phoneList2 = phoneRepository.saveAll(phoneList);
-        assertEquals(phoneList, phoneList2);
-        List<Phone> phoneFilledRepository = phoneRepository.findAll();
-        assertEquals(phoneList2, phoneFilledRepository);
-    }
-
-    @Test
-    public void deletePhone() {
-        Phone savedPhone = phoneRepository.save(new Phone());
-        Phone phoneById = phoneRepository.getById(1);
-        assertEquals(savedPhone, phoneById);
-        phoneRepository.deleteById(1);
-        assertThat(savedPhone).isNotIn(phoneRepository);
     }
 }

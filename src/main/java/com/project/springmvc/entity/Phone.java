@@ -3,7 +3,7 @@ package com.project.springmvc.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="phone")
+@Table(name = "phone")
 public class Phone {
 
     @Id
@@ -37,18 +37,9 @@ public class Phone {
         this.phone = phone;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Phone(int phone_id, String phone, Customer customer) {
+    public Phone(int phone_id, String phone) {
         this.phone_id = phone_id;
         this.phone = phone;
-        this.customer = customer;
     }
 
     @Override
@@ -56,7 +47,6 @@ public class Phone {
         return "Phone{" +
                 "phone_id=" + phone_id +
                 ", phone='" + phone + '\'' +
-//                ", customer_id=" + customer.getId() +
                 '}';
     }
 }

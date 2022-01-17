@@ -1,7 +1,8 @@
-<%@ page  contentType="text/html; charset=ISO-8859-1"
+<%@ page contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,7 @@
                 <div class="panel-title">Add Phone</div>
             </div>
             <div class="panel-body">
+
                 <form:form action="savePhone" cssClass="form-horizontal"
                            method="post" modelAttribute="phone">
 
@@ -37,18 +39,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                            <table>
-                                <tr>
-                                    <td></td>
-<%--                                    <td>--%>
-<%--                                        <c:forEach var="tempCustomer" items="${customers}">--%>
-<%--                                            <label>--%>
-<%--                                                <input type="radio" value="${tempCustomer.id}" name="id"/>--%>
-<%--                                            </label>${tempCustomer.firstName}<br/>--%>
-<%--                                        </c:forEach>--%>
-<%--                                    </td>--%>
-                                </tr>
-                            </table>
+                        <div class="col-md-9">
+                            <form:select path="customer">
+                                <c:forEach items="${customers}" var="tempCustomer">
+                                    <option value="${tempCustomer.id}">${tempCustomer.firstName}</option>
+                                </c:forEach>
+                            </form:select>
+                        </div>
                     </div>
                     <div class="form-group">
                         <!-- Button -->

@@ -2,16 +2,13 @@ package com.project.springmvc.controller;
 
 import com.project.springmvc.entity.Customer;
 import com.project.springmvc.entity.Phone;
-import com.project.springmvc.repository.CustomerRepository;
-import com.project.springmvc.repository.PhoneRepository;
 import com.project.springmvc.service.CustomerService;
 import com.project.springmvc.service.PhoneService;
 import javassist.NotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Controller
@@ -43,17 +40,16 @@ public class CustomerController {
     @GetMapping("/showPhoneForm")
     public String showPhoneFormForAdd(Model theModel) {
         Phone phone = new Phone();
-        List<Customer> theCustomers = customerService.getCustomers();
-        theModel.addAttribute("customers", theCustomers);
+        List<Customer> customers = customerService.getCustomers();
+        Customer customer = new Customer();
         theModel.addAttribute("phone", phone);
+        theModel.addAttribute("customers", customers);
         return "phone-form";
     }
 
     @PostMapping("/savePhone")
-    public String savePhone(@ModelAttribute("phone") Phone phone,
-                            @ModelAttribute("customers") Customer customer) {
+    public String savePhone(@ModelAttribute("phone") Phone phone, BindingResult bindingResult) {
         phoneService.savePhone(phone);
-        customerService.saveCustomer(customer);
         return "redirect:/customer/list";
     }
 

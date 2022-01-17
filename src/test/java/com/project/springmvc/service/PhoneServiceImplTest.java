@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -31,18 +32,17 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional
 class PhoneServiceImplTest {
 
-    @Resource
-    PhoneService phoneService;
-
-    @Resource
-    PhoneRepository phoneRepository;
+    @Autowired
+    private PhoneService phoneService;
 
     @Test
     void saveAndGetPhone() throws NotFoundException {
         Phone phone = new Phone();
+        phone.setPhone_id(0);
+        phone.setPhone("13471361235");
         phoneService.savePhone(phone);
-        Phone customer1 = phoneService.getPhone(7);
-        assertEquals(phone, customer1);
+        Phone phone1 = phoneService.getPhone(7);
+        assertEquals(phone, phone1);
     }
 
     @Test
@@ -69,8 +69,7 @@ class PhoneServiceImplTest {
         phoneService.savePhone(phone);
         Phone phoneById = phoneService.getPhone(6);
         assertEquals(phone, phoneById);
-        phoneRepository.deleteById(6);
+        phoneService.deletePhone(6);
         assertThat(phone).isNotIn(phoneService);
-        assertThat(phone).isNotIn(phoneRepository);
     }
 }
