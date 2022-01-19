@@ -40,7 +40,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-9">
-                            <form:select path="customer">
+                            <form:select path="customer" name="customer" >
                                 <c:forEach items="${customers}" var="tempCustomer">
                                     <option value="${tempCustomer.id}">${tempCustomer.firstName}</option>
                                 </c:forEach>

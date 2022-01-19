@@ -1,14 +1,9 @@
 package com.project.springmvc.service;
 
 import com.project.springmvc.config.AppContext;
-import com.project.springmvc.entity.Customer;
 import com.project.springmvc.entity.Phone;
-import com.project.springmvc.repository.CustomerRepository;
-import com.project.springmvc.repository.PhoneRepository;
 import javassist.NotFoundException;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +12,12 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
+
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(
         classes = {AppContext.class, PhoneServiceImpl.class},

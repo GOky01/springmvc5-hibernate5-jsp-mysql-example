@@ -49,5 +49,13 @@ public class Phone {
                 ", phone='" + phone + '\'' +
                 '}';
     }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }
 

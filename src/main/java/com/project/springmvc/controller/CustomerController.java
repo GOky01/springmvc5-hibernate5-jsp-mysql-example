@@ -41,14 +41,16 @@ public class CustomerController {
     public String showPhoneFormForAdd(Model theModel) {
         Phone phone = new Phone();
         List<Customer> customers = customerService.getCustomers();
-        Customer customer = new Customer();
         theModel.addAttribute("phone", phone);
         theModel.addAttribute("customers", customers);
         return "phone-form";
     }
 
     @PostMapping("/savePhone")
-    public String savePhone(@ModelAttribute("phone") Phone phone, BindingResult bindingResult) {
+    public String savePhone(@ModelAttribute("phone") Phone phone,
+                            @RequestParam int theId) throws NotFoundException {
+        Customer customer = customerService.getCustomer(theId);
+        phone.setCustomer(customer);
         phoneService.savePhone(phone);
         return "redirect:/customer/list";
     }
