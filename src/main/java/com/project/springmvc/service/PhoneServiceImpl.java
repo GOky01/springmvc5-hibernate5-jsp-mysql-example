@@ -2,7 +2,6 @@ package com.project.springmvc.service;
 
 import com.project.springmvc.entity.Phone;
 import com.project.springmvc.repository.PhoneRepository;
-import javassist.NotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,14 +30,13 @@ public class PhoneServiceImpl implements PhoneService {
 
     @Override
     @Transactional
-    public Phone getPhone(int theId) throws NotFoundException {
-        return phoneRepository.findById(theId).orElseThrow(()
-                -> new NotFoundException("Phone was not fount with id :" + theId));
+    public Phone getPhone(int id) {
+        return phoneRepository.findById(id).orElse(null);
     }
 
     @Override
     @Transactional
-    public void deletePhone(int theId) {
-        phoneRepository.deleteById(theId);
+    public void deletePhone(int id) {
+        phoneRepository.deleteById(id);
     }
 }

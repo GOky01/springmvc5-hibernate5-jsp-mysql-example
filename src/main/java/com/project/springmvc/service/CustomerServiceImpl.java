@@ -30,21 +30,20 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional
-    public void saveCustomer(Customer theCustomer) {
-        customerRepository.save(theCustomer);
+    public void saveCustomer(Customer customer) {
+        customerRepository.save(customer);
     }
 
     @Override
     @Transactional
-    public Customer getCustomer(int theId) throws NotFoundException {
-        return customerRepository.findById(theId).orElseThrow(()
-                -> new NotFoundException("Customer was not fount with id :" + theId));
+    public Customer getCustomer(int id) {
+        return customerRepository.findById(id).orElse(null);
     }
 
     @Override
     @Transactional
-    public void deleteCustomer(int theId) {
-        customerRepository.deleteById(theId);
+    public void deleteCustomer(int id) {
+        customerRepository.deleteById(id);
     }
 }
 

@@ -5,7 +5,6 @@
 <html>
 <head><%@ page isELIgnored="false" %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>javaguides.net</title>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
 <script src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
@@ -17,10 +16,10 @@
 			<h2>Customer Relationship List</h2>
 			<hr />
 			<input type="button" value="Add Customer"
-				onclick="window.location.href='showForm'; return false;"
+				onclick="window.location.href='addCustomer'; return false;"
 				class="btn btn-primary" />
 			<input type="button" value="Add Phone"
-				   onclick="window.location.href='showPhoneForm'; return false;"
+				   onclick="window.location.href='addPhone'; return false;"
 				   class="btn btn-primary" />
 				<br/><br/>
 			<div class="panel panel-info">
@@ -37,20 +36,19 @@
 							<th>Action</th>
 						</tr>
 
-						<!-- loop over and print our customers -->
 						<c:forEach var="tempCustomer" items="${customers}">
 
-							<c:url var="updateLink" value="/customer/updateForm">
-								<c:param name="customerId" value="${tempCustomer.id}" />
+							<c:url var="updateLink" value="/updateCustomer">
+								<c:param name="id" value="${tempCustomer.id}" />
 							</c:url>
 
-							<c:url var="deleteLink" value="/customer/delete">
-								<c:param name="customerId" value="${tempCustomer.id}" />
+							<c:url var="deleteLink" value="/deleteCustomer">
+								<c:param name="id" value="${tempCustomer.id}" />
 							</c:url>
 
 							<tr>
-								<td>${tempCustomer.firstName}</td>
-								<td>${tempCustomer.lastName}</td>
+								<td>${tempCustomer.first_name}</td>
+								<td>${tempCustomer.last_name}</td>
 								<td>${tempCustomer.email}</td>
 								<td>${tempCustomer.phones}</td>
 

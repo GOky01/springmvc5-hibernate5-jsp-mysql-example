@@ -2,7 +2,6 @@ package com.project.springmvc.service;
 
 import com.project.springmvc.config.AppContext;
 import com.project.springmvc.entity.Phone;
-import javassist.NotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,7 +28,7 @@ class PhoneServiceImplTest {
     private PhoneService phoneService;
 
     @Test
-    void saveAndGetPhone() throws NotFoundException {
+    void saveAndGetPhone() {
         Phone phone = new Phone();
         phone.setPhone_id(0);
         phone.setPhone("13471361235");
@@ -57,7 +56,7 @@ class PhoneServiceImplTest {
     }
 
     @Test
-    void deletePhone() throws NotFoundException {
+    void deletePhone() {
         Phone phone = new Phone();
         phoneService.savePhone(phone);
         Phone phoneById = phoneService.getPhone(6);

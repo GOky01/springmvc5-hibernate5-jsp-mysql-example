@@ -1,18 +1,17 @@
 package com.project.springmvc.service;
 
-import java.util.List;
-
 import com.project.springmvc.entity.Customer;
-import javassist.NotFoundException;
+
+import java.util.List;
 
 public interface CustomerService {
 
-	List<Customer> getCustomers();
+    List<Customer> getCustomers();
 
-	void saveCustomer(Customer theCustomer);
+    void saveCustomer(Customer customer);
 
-	Customer getCustomer(int theId) throws NotFoundException;
+    Customer getCustomer(int id);
 
-	void deleteCustomer(int theId);
-	
+    void deleteCustomer(int id);
+
 }

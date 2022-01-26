@@ -28,7 +28,6 @@
                 <form:form action="savePhone" cssClass="form-horizontal"
                            method="post" modelAttribute="phone">
 
-                    <!-- need to associate this data with phone id -->
                     <form:hidden path="phone_id"/>
 
                     <div class="form-group">
@@ -40,15 +39,14 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-9">
-                            <form:select path="customer" name="customer" >
+                            <select name="id" >
                                 <c:forEach items="${customers}" var="tempCustomer">
-                                    <option value="${tempCustomer.id}">${tempCustomer.firstName}</option>
+                                    <option value="${tempCustomer.id}">${tempCustomer.first_name}</option>
                                 </c:forEach>
-                            </form:select>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <!-- Button -->
                         <div class="col-md-offset-3 col-md-9">
                             <form:button cssClass="btn btn-primary">Submit</form:button>
                         </div>

@@ -35,8 +35,8 @@ public class CustomerRepositoryTest {
     public void saveAndGetCustomer() {
 
         Customer customer = new Customer();
-        customer.setFirstName("testName");
-        customer.setLastName("testLastName");
+        customer.setFirst_name("testName");
+        customer.setLast_name("testLastName");
         customer.setEmail("test@gmail.com");
         Phone phone1 = new Phone(1, "123613143");
         Phone phone2 = new Phone(2, "714361125");
@@ -53,8 +53,8 @@ public class CustomerRepositoryTest {
                 () -> assertEquals(customer.getId(), customerById.getId()),
                 () -> assertEquals(customer.getEmail(), customerById.getEmail()),
                 () -> assertEquals(customer.getPhones(), customerById.getPhones()),
-                () -> assertEquals(customer.getFirstName(), customerById.getFirstName()),
-                () -> assertEquals(customer.getLastName(), customerById.getLastName()));
+                () -> assertEquals(customer.getFirst_name(), customerById.getFirst_name()),
+                () -> assertEquals(customer.getLast_name(), customerById.getLast_name()));
     }
 
     @Test

@@ -29,17 +29,17 @@
 						<form:hidden path="id" />
 
 						<div class="form-group">
-							<label for="firstName" class="col-md-3 control-label">First
+							<label for="first_name" class="col-md-3 control-label">First
 								Name</label>
 							<div class="col-md-9">
-								<form:input path="firstName" cssClass="form-control" />
+								<form:input path="first_name" cssClass="form-control" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="lastName" class="col-md-3 control-label">Last
+							<label for="last_name" class="col-md-3 control-label">Last
 								Name</label>
 							<div class="col-md-9">
-								<form:input path="lastName" cssClass="form-control" />
+								<form:input path="last_name" cssClass="form-control" />
 							</div>
 						</div>
 

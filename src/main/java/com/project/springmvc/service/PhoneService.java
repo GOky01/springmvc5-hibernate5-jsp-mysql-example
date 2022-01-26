@@ -11,7 +11,7 @@ public interface PhoneService {
 
     void savePhone(Phone phone);
 
-    Phone getPhone(int theId) throws NotFoundException;
+    Phone getPhone(int id) ;
 
-    void deletePhone(int theId);
+    void deletePhone(int id);
 }

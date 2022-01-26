@@ -28,7 +28,7 @@ class CustomerServiceImplTest {
     private CustomerService customerService;
 
     @Test
-    void saveAndGetCustomer() throws NotFoundException {
+    void saveAndGetCustomer() {
         Customer customer = new Customer();
         customerService.saveCustomer(customer);
         Customer customer1 = customerService.getCustomer(7);
@@ -54,7 +54,7 @@ class CustomerServiceImplTest {
     }
 
     @Test
-    void deleteCustomer() throws NotFoundException {
+    void deleteCustomer()  {
         Customer customer = new Customer();
         customerService.saveCustomer(customer);
         Customer customerById = customerService.getCustomer(6);

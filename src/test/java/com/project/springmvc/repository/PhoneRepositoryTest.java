@@ -33,8 +33,8 @@ public class PhoneRepositoryTest {
     public void saveAndGetPhone() {
 
         Customer customer = new Customer();
-        customer.setFirstName("testName");
-        customer.setLastName("testLastName");
+        customer.setFirst_name("testName");
+        customer.setLast_name("testLastName");
         customer.setEmail("test@gmail.com");
         Phone phone1 = new Phone(0, "123613143");
 

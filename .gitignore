@@ -1,3 +1,4 @@
 # Project exclude paths
 /target/
 /.idea/
+springmvc5-hibernate5-jsp-mysql-example.iml
